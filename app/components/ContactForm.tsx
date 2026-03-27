@@ -5,9 +5,9 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { contactSchema, type ContactFormData } from '@/lib/contactSchema';
 
-const TEAL = '#01BF81';
-const CYAN = '#41C3D3';
-const GRADIENT = `linear-gradient(135deg, ${TEAL}, ${CYAN})`;
+const PRIMARY_COLOR = '#ff4e50';
+const SECONDARY_COLOR = '#f9d423';
+const GRADIENT = `linear-gradient(135deg, ${PRIMARY_COLOR}, ${SECONDARY_COLOR})`;
 
 // ─── Small helpers ────────────────────────────────────────────────────────────
 function Label({ children }: { children: React.ReactNode }) {
@@ -20,7 +20,7 @@ function Label({ children }: { children: React.ReactNode }) {
         fontWeight: 700,
         letterSpacing: '1.5px',
         textTransform: 'uppercase',
-        color: '#8a8b8e',
+        color: 'rgba(0,0,0,0.6)',
         marginBottom: 6,
       }}
     >
@@ -137,10 +137,7 @@ export default function ContactForm() {
               fontWeight: 700,
               letterSpacing: '3px',
               textTransform: 'uppercase',
-              background: GRADIENT,
-              WebkitBackgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              backgroundClip: 'text',
+              color: '#ffffff',
               marginBottom: 14,
             }}
           >
@@ -152,22 +149,22 @@ export default function ContactForm() {
               fontFamily: "'Raleway', sans-serif",
               fontSize: 'clamp(24px, 3vw, 36px)',
               fontWeight: 300,
-              color: '#3d465a',
+              color: '#ffffff',
               marginBottom: 12,
             }}
           >
             Envíanos un{' '}
-            <span style={{ fontWeight: 800, background: GRADIENT, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+            <span style={{ fontWeight: 800, color: '#ffffff' }}>
               Mensaje
             </span>
           </h2>
 
           {/* Teal underline accent — Simba style */}
           <div style={{ display: 'flex', justifyContent: 'center', marginBottom: 16 }}>
-            <div style={{ width: 48, height: 2, borderRadius: 2, background: GRADIENT }} />
+            <div style={{ width: 48, height: 2, borderRadius: 2, background: '#ffffff' }} />
           </div>
 
-          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#8a8b8e', maxWidth: 520, margin: '0 auto' }}>
+          <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: 'rgba(255,255,255,0.85)', maxWidth: 520, margin: '0 auto' }}>
             Somos una apasionada agencia de diseño digital. Cuéntanos sobre tu proyecto y te responderemos a la brevedad.
           </p>
         </div>
@@ -192,8 +189,8 @@ export default function ContactForm() {
                 placeholder="Tu nombre completo"
                 style={inputStyle(!!errors.name)}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = TEAL;
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(1,191,129,0.12)';
+                  e.currentTarget.style.borderColor = PRIMARY_COLOR;
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255,78,80,0.12)';
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = errors.name ? '#e05252' : '#e8ecf0';
@@ -212,8 +209,8 @@ export default function ContactForm() {
                 placeholder="tu@correo.com"
                 style={inputStyle(!!errors.email)}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = TEAL;
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(1,191,129,0.12)';
+                  e.currentTarget.style.borderColor = PRIMARY_COLOR;
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255,78,80,0.12)';
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = errors.email ? '#e05252' : '#e8ecf0';
@@ -232,8 +229,8 @@ export default function ContactForm() {
                 placeholder="¿En qué podemos ayudarte?"
                 style={inputStyle(!!errors.subject)}
                 onFocus={(e) => {
-                  e.currentTarget.style.borderColor = TEAL;
-                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(1,191,129,0.12)';
+                  e.currentTarget.style.borderColor = PRIMARY_COLOR;
+                  e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255,78,80,0.12)';
                 }}
                 onBlur={(e) => {
                   e.currentTarget.style.borderColor = errors.subject ? '#e05252' : '#e8ecf0';
@@ -253,8 +250,8 @@ export default function ContactForm() {
               placeholder="Cuéntanos más sobre tu proyecto o consulta..."
               style={{ ...inputStyle(!!errors.message), resize: 'vertical', minHeight: 140 }}
               onFocus={(e) => {
-                e.currentTarget.style.borderColor = TEAL;
-                e.currentTarget.style.boxShadow = '0 0 0 3px rgba(1,191,129,0.12)';
+                e.currentTarget.style.borderColor = PRIMARY_COLOR;
+                e.currentTarget.style.boxShadow = '0 0 0 3px rgba(255,78,80,0.12)';
               }}
               onBlur={(e) => {
                 e.currentTarget.style.borderColor = errors.message ? '#e05252' : '#e8ecf0';
@@ -278,10 +275,10 @@ export default function ContactForm() {
                 gap: 10,
               }}
             >
-              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke={TEAL} strokeWidth={2.5}>
+              <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke={PRIMARY_COLOR} strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
-              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: '#01BF81', margin: 0 }}>
+              <p style={{ fontFamily: "'Poppins', sans-serif", fontSize: 14, color: PRIMARY_COLOR, margin: 0 }}>
                 ¡Mensaje enviado! Te responderemos pronto.
               </p>
             </div>
@@ -395,7 +392,7 @@ export default function ContactForm() {
                     fontWeight: 700,
                     letterSpacing: '2px',
                     textTransform: 'uppercase',
-                    color: TEAL,
+                    color: PRIMARY_COLOR,
                     margin: '0 0 4px',
                   }}
                 >
